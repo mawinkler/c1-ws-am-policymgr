@@ -1,0 +1,31 @@
+directory_lists:
+  windows_server_2016:
+    - '${windir}\SoftwareDistribution\Datastore\'
+    - '${windir}\SoftwareDistribution\Datastore\Logs\'
+  windows_server_2019:
+    - '${windir}\SoftwareDistribution\Datastore\'
+    - '${windir}\SoftwareDistribution\Datastore\Logs\'
+  linux_root:
+    - '/root/'
+file_lists:
+  windows_server:
+    # - 'C:\*.log'
+    - '${windir}\Security\Database\*.edb'
+    - '${windir}\Security\Database\*.sdb'
+    - '${windir}\Security\Database\*.log'
+    - '${windir}\Security\Database\*.edb'
+    - '${windir}\Security\Database\*.edb'
+  windows_domain_controller:
+    - '${windir}\Ntds\Ntds.dit'
+    - '${windir}\Ntds\Ntds.pat'
+    - '${windir}\Ntds\EDB*.log'
+    - '${windir}\Ntds\Res*.log'
+    - '${windir}\Ntds\Edb*.jrs'
+    - '${windir}\Ntds\Ntds.pat'
+  windows_member_server:
+    - 'D:\TEST.LOG'
+  windows_client:
+    - 'C:\VIRUS.LOG'
+  windows_client_outlook: []
+  windows_client_word: []
+file_extension_lists: []

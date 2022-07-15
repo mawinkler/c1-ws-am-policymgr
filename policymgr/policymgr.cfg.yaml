@@ -1,0 +1,114 @@
+# Malware Scan Configurations
+
+malware_scan_configuration:
+  ## Realtime Scan Configuration
+  realtime_scan_configuration:
+    - name: windows_server_2016_domain_controller
+      ## Inclusion Lists
+      inclusions:
+        - directory_lists: []
+          file_extension_lists: []
+      ## Exclusion Lists
+      exclusions:
+        - directory_lists:
+            - windows_server_2016
+          file_lists:
+            - windows_server
+            - windows_domain_controller
+          file_extension_lists: []
+    - name: windows_server_2019_domain_controller
+      inclusions:
+        - directory_lists:
+            - windows_server
+          file_extension_lists: []
+      exclusions:
+        - directory_lists:
+            - windows_server_2019
+          file_lists:
+            - windows_server
+            - windows_domain_controller
+          file_extension_lists: []
+    - name: windows_server_2019_member_server
+      inclusions:
+        - directory_lists:
+            - windows_server
+          file_extension_lists: []
+      exclusions:
+        - directory_lists:
+            - windows_server_2019
+          file_lists:
+            - windows_server
+            - windows_member_server
+          file_extension_lists: []
+
+  ## Scheduled Scan Configuration
+  scheduled_scan_configuration:
+  - name: windows_server_2016_domain_controller
+    inclusions:
+      - directory_lists: []
+        file_extension_lists: []
+    exclusions:
+      - directory_lists: []
+        file_lists: []
+        file_extension_lists: []
+  - name: windows_server_2019_domain_controller
+    inclusions:
+      - directory_lists:
+          - windows_server
+        file_extension_lists: []
+    exclusions:
+      - directory_lists: []
+        file_lists: []
+        file_extension_lists: []
+  - name: linux_server
+    inclusions:
+      - directory_lists: []
+        file_extension_lists: []
+    exclusions:
+      - directory_lists:
+         - linux_root
+        file_lists: []
+        file_extension_lists: []
+
+# Exclusion Lists
+#
+# References:
+#   Windows: https://support.microsoft.com/en-gb/topic/virus-scanning-recommendations-for-enterprise-computers-that-are-running-windows-or-windows-server-kb822158-c067a732-f24a-9079-d240-3733e39b40bc
+exclusion_lists:
+  directory_lists:
+    windows_server_2016:
+      - '${windir}\SoftwareDistribution\Datastore\'
+      - '${windir}\SoftwareDistribution\Datastore\Logs\'
+    windows_server_2019:
+      - '${windir}\SoftwareDistribution\Datastore\'
+      - '${windir}\SoftwareDistribution\Datastore\Logs\'
+    linux_root:
+      - '/root/'
+  file_lists:
+    windows_server:
+      # - 'C:\*.log'
+      - '${windir}\Security\Database\*.edb'
+      - '${windir}\Security\Database\*.sdb'
+      - '${windir}\Security\Database\*.log'
+      - '${windir}\Security\Database\*.edb'
+      - '${windir}\Security\Database\*.edb'
+    windows_domain_controller:
+      - '${windir}\Ntds\Ntds.dit'
+      - '${windir}\Ntds\Ntds.pat'
+      - '${windir}\Ntds\EDB*.log'
+      - '${windir}\Ntds\Res*.log'
+      - '${windir}\Ntds\Edb*.jrs'
+      - '${windir}\Ntds\Ntds.pat'
+    windows_member_server:
+      - 'D:\TEST.LOG'
+    windows_client:
+      - 'C:\VIRUS.LOG'
+    windows_client_outlook: []
+    windows_client_word: []
+
+# Inclusion Lists
+inclusion_lists:
+  directory_lists: 
+    windows_server:
+      - 'Z:\'
+      - 'C:\temp\'

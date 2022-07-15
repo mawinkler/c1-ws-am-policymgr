@@ -1,0 +1,122 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/PolicyConfiguration",
+    "definitions": {
+        "PolicyConfiguration": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "malware_scan_configuration": {
+                    "$ref": "#/definitions/MalwareScanConfiguration"
+                },
+                "exclusion_lists": {
+                    "$ref": "#/definitions/ClusionLists"
+                },
+                "inclusion_lists": {
+                    "$ref": "#/definitions/ClusionLists"
+                }
+            },
+            "required": [
+                "malware_scan_configuration"
+            ],
+            "title": "PolicyConfiguration"
+        },
+        "ClusionLists": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "directory_lists": {
+                    "$ref": "#/definitions/Lists"
+                },
+                "file_lists": {
+                    "$ref": "#/definitions/Lists"
+                },
+                "file_extension_lists": {
+                    "$ref": "#/definitions/Lists"
+                }
+            },
+            "title": "ClusionLists"
+        },
+        "Lists": {
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^.*$": {
+                    "type": "array"
+                }
+              },
+            "title": "Lists"
+        },
+        "MalwareScanConfiguration": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "realtime_scan_configuration": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ScanConfiguration"
+                    }
+                },
+                "scheduled_scan_configuration": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ScanConfiguration"
+                    }
+                }
+            },
+            "title": "MalwareScanConfiguration"
+        },
+        "ScanConfiguration": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "inclusions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Clusion"
+                    }
+                },
+                "exclusions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Clusion"
+                    }
+                }
+            },
+            "required": [
+                "exclusions",
+                "inclusions",
+                "name"
+            ],
+            "title": "ScanConfiguration"
+        },
+        "Clusion": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "directory_lists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "file_lists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "file_extension_lists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "title": "Clusion"
+        }
+    }
+}
