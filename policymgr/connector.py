@@ -9,7 +9,7 @@ from errors import (
 
 
 class CloudOneConnector:
-    """CloudOneConnector - handels the connection to Cloud One"""
+    """CloudOneConnector - handles the connection to Cloud One"""
 
     def __init__(self):
         # API credentials are mounted to /etc

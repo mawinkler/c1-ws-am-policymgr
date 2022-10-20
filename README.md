@@ -12,6 +12,9 @@
 
 Manages file-, directory- and file extension inclusion- and exclusion lists alongside scan configurations in Cloud One Workload Security based on a central YAML definition.
 
+For official recommendations by Trend Micro Business Success follow this link: [Recommended scan exclusion list for Trend Micro Endpoint products](https://success.trendmicro.com/dcx/s/solution/1059770-recommended-scan-exclusion-list-for-trend-micro-endpoint-products?language=en_US)
+
+
 > ***Note:*** This script is at *ALPHA* stage which means, that not all required functionalities are implemented yet. Additionally it is *NOT* tested in production environments as of now.
 >
 > Currently known missing functionality:
@@ -60,7 +63,7 @@ To help writing the YAML configuration file the repo contains a schema definitio
 - Go to Code (Mac) or File (Windows) -> Preferences -> Settings (or use the Command Pallete) to open the settings page and search for yaml.
 - Open the settings for the YAML extension and search for "Yaml: Schemas" and click `Edit in settings.json`.
 - The "settings.json" file will open. you need to search again for the "yaml.schemas" object. If it doesn´t exist yet, you will have to create it.
-- This property represents a key-value, where the key is the *absolute path* to the schema file on our system and the value is a glob expression that specifies the files that the schema will be applied. In my case it looks like this:
+- This property represents a key-value, where the key is the *absolute path* to the schema file on your system and the value is a glob expression that specifies the files that the schema will be applied. In my case it looks like this:
 
     ```yaml
     "yaml.schemas": {
@@ -195,8 +198,8 @@ Official support from Trend Micro is not available. Individual contributors may 
 I do accept contributions from the community. To submit changes:
 
 1. Fork this repository.
-1. Create a new feature branch.
-1. Make your changes.
-1. Submit a pull request with an explanation of your changes or additions.
+2. Create a new feature branch.
+3. Make your changes.
+4. Submit a pull request with an explanation of your changes or additions.
 
 I will review and work with you to release the code.
